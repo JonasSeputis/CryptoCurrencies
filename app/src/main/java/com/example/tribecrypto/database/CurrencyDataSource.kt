@@ -1,8 +1,8 @@
 package com.example.tribecrypto.database
 
 import com.example.tribecrypto.Api
-import com.example.tribecrypto.data.CryptoCurrencyEntity
-import com.example.tribecrypto.data.networkObject.CryptoCurrencyCallObject
+import com.example.tribecrypto.data.entity.CryptoCurrencyEntity
+import com.example.tribecrypto.data.network_object.CryptoCurrencyCallObject
 import com.example.tribecrypto.repository.CurrencyRepository
 import io.reactivex.Completable
 import io.reactivex.Observable
@@ -22,6 +22,10 @@ class CurrencyDataSource @Inject constructor(
         return currencyDao.getAllCurrencies()
     }
 
+    override fun getEntityByName(name: String): Single<CryptoCurrencyEntity> {
+        return currencyDao.getEntityByName(name)
+    }
+
     override fun getCurrencyListFromApi(): Single<CryptoCurrencyCallObject> {
         return api.getLatestList()
             .subscribeOn(Schedulers.io())
@@ -30,6 +34,11 @@ class CurrencyDataSource @Inject constructor(
 
     override fun insertCurrenciesList(data: List<CryptoCurrencyEntity>): Completable {
         return Completable.fromAction { currencyDao.insertAll(data) }
+            .doOnError { t: Throwable? -> Timber.e(t) }
+    }
+
+    override fun updateCurrency(data: CryptoCurrencyEntity): Completable {
+        return Completable.fromAction { currencyDao.update(data) }
             .doOnError { t: Throwable? -> Timber.e(t) }
     }
 
@@ -42,6 +51,4 @@ class CurrencyDataSource @Inject constructor(
         return Completable.fromAction { currencyDao.deleteAllCryptoCurrencies() }
             .doOnError { t: Throwable? -> Timber.e(t) }
     }
-
-
 }

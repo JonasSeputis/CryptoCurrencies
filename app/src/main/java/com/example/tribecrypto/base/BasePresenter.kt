@@ -16,7 +16,7 @@ abstract class BasePresenter<T> : Presenter<T> {
         return view
     }
 
-    override fun setView(view: T) {
+    override fun setView(view: T?) {
         this.view = view
         if (view == null) {
             subscriptions.clear()

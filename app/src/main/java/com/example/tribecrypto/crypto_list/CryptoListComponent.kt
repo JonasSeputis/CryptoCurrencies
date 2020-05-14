@@ -1,4 +1,4 @@
-package com.example.tribecrypto.cryptoList
+package com.example.tribecrypto.crypto_list
 
 import com.example.tribecrypto.di.component.ApplicationComponent
 import dagger.Component

@@ -5,6 +5,7 @@
     <color name="colorAccent">#03DAC5</color>
     <color name="colorToolbarBackground">#f0f0f0</color>
     <color name="colorBlack">#000000</color>
+    <color name="colorOrange">#FF9800</color>
 
 
 </resources>

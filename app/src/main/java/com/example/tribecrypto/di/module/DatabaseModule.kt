@@ -5,14 +5,16 @@ import androidx.room.Room
 import com.example.tribecrypto.Api
 import com.example.tribecrypto.database.CurrencyDao
 import com.example.tribecrypto.database.CurrencyDataSource
-import com.example.tribecrypto.repository.CurrencyRepository
 import com.example.tribecrypto.database.Database
-import com.example.tribecrypto.database.currencyDetails.DetailsDao
-import com.example.tribecrypto.database.currencyDetails.DetailsDataStructure
+import com.example.tribecrypto.database.currency_details.DetailsDao
+import com.example.tribecrypto.database.currency_details.DetailsDataSource
+import com.example.tribecrypto.database.watchlist.WatchListDao
+import com.example.tribecrypto.database.watchlist.WatchListDataSource
 import com.example.tribecrypto.repository.CurrencyDetailsRepository
+import com.example.tribecrypto.repository.CurrencyRepository
+import com.example.tribecrypto.repository.WatchListRepository
 import dagger.Module
 import dagger.Provides
-import javax.inject.Singleton
 
 @Module
 class DatabaseModule {
@@ -39,12 +41,22 @@ class DatabaseModule {
     }
 
     @Provides
+    fun providesWatchListDao(database: Database): WatchListDao {
+        return database.getWatchListDao()
+    }
+
+    @Provides
     fun currencyRepository(currencyDao: CurrencyDao, api: Api) : CurrencyRepository {
         return CurrencyDataSource(currencyDao, api)
     }
 
     @Provides
     fun currencyDetailsRepository(currencyDetailsDao: DetailsDao) : CurrencyDetailsRepository {
-        return DetailsDataStructure(currencyDetailsDao)
+        return DetailsDataSource(currencyDetailsDao)
+    }
+
+    @Provides
+    fun watchListRepository(watchListDao: WatchListDao): WatchListRepository {
+        return WatchListDataSource(watchListDao)
     }
 }

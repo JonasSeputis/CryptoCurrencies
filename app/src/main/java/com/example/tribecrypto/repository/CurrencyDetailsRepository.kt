@@ -1,6 +1,6 @@
 package com.example.tribecrypto.repository
 
-import com.example.tribecrypto.data.CryptoCurrencyDetailsEntity
+import com.example.tribecrypto.data.entity.CryptoCurrencyDetailsEntity
 import io.reactivex.Completable
 import io.reactivex.Observable
 

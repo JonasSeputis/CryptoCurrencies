@@ -13,7 +13,7 @@ class ApplicationClass : Application() {
     lateinit var applicationComponent: ApplicationComponent
 
     companion object {
-        fun getApplicationComponent(context: Context) : ApplicationComponent {
+        fun getApplicationComponent(context: Context): ApplicationComponent {
             val app = context.applicationContext as ApplicationClass
             app.applicationComponent = DaggerApplicationComponent
                 .builder()
@@ -29,5 +29,4 @@ class ApplicationClass : Application() {
         Timber.plant(Timber.DebugTree())
         getApplicationComponent(this).inject(this)
     }
-
 }
