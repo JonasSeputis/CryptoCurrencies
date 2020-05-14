@@ -1,6 +1,5 @@
 package com.example.tribecrypto.crypto_list
 
-import android.annotation.SuppressLint
 import com.example.tribecrypto.base.BasePresenter
 import com.example.tribecrypto.data.entity.CryptoCurrencyDetailsEntity
 import com.example.tribecrypto.data.entity.CryptoCurrencyEntity
@@ -48,8 +47,7 @@ class CryptoListPresenter @Inject constructor(
         )
     }
 
-    @SuppressLint("CheckResult")
-    fun getCurrenciesFromDB() {
+    private fun getCurrenciesFromDB() {
         subscriptions.add(
             currencyRepository.getAllCurrencies()
                 .subscribeOn(Schedulers.newThread())
