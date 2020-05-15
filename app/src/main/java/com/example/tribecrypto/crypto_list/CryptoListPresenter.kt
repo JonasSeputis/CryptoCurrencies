@@ -38,7 +38,6 @@ class CryptoListPresenter @Inject constructor(
                     val currenciesList = formCurrenciesList(it)
                     currencyWatchlistObject.currency = currenciesList.currenciesList
                     getWatchList()
-                    setWatchListTest(currenciesList.currenciesList)
                     insertToDB(currenciesList.currenciesList)
                     insertDetailsToDB(currenciesList.currenciesDetailsList)
                 }, { t: Throwable? ->
