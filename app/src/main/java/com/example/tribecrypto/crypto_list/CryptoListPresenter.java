@@ -1,7 +1,5 @@
 package com.example.tribecrypto.crypto_list;
 
-import android.util.Log;
-
 import com.example.tribecrypto.base.BasePresenter;
 import com.example.tribecrypto.data.entity.CryptoCurrencyDetailsEntity;
 import com.example.tribecrypto.data.entity.CryptoCurrencyEntity;
@@ -44,12 +42,9 @@ public class CryptoListPresenter extends BasePresenter<CryptoListView> {
 
     public void getCurrenciesList(Boolean connectedToInternet) {
         Timber.d(connectedToInternet.toString());
-        Log.d("TEST", connectedToInternet.toString());
         if (connectedToInternet) {
-            Log.d("TEST", "1");
             getCurrenciesFromApi();
         } else {
-            Log.d("TEST","2");
             getView().noInternetConnectionInformation();
             getCurrenciesFromDB();
         }
