@@ -1,17 +1,11 @@
 package com.example.tribecrypto.crypto_list
 
-import com.example.tribecrypto.data.entity.CryptoCurrencyEntity
-import com.example.tribecrypto.repository.CurrencyDetailsRepository
-import com.example.tribecrypto.repository.CurrencyRepository
-import com.example.tribecrypto.repository.WatchListRepository
 import io.reactivex.Observable
 import org.junit.Before
 
-import org.junit.Assert.*
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.Mock
-import org.mockito.Mockito
 import org.mockito.Mockito.*
 import org.mockito.MockitoAnnotations
 import org.mockito.runners.MockitoJUnitRunner
