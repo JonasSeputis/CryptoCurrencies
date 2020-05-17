@@ -50,7 +50,7 @@ public class CryptoListPresenter extends BasePresenter<CryptoListView> {
         }
     }
 
-    private void getCurrenciesFromDB() {
+    public void getCurrenciesFromDB() {
         subscriptions.add(
                 currencyRepository.getAllCurrencies()
                         .doOnNext(list -> {
@@ -62,7 +62,7 @@ public class CryptoListPresenter extends BasePresenter<CryptoListView> {
         );
     }
 
-    private void getCurrenciesFromApi() {
+    public void getCurrenciesFromApi() {
         subscriptions.add(
                 currencyRepository.getCurrencyListFromApi()
                         .subscribe( it -> {
