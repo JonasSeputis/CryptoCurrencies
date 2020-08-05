@@ -61,7 +61,7 @@ class CryptoListPresenter @Inject constructor(
         )
     }
 
-    private fun getWatchList() {
+    public fun getWatchList() {
         subscriptions.add(
             watchListRepository.getAllWatchList()
                 .subscribeOn(Schedulers.newThread())
