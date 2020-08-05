@@ -15,6 +15,8 @@ import org.mockito.MockitoAnnotations;
 
 import io.reactivex.Observable;
 import io.reactivex.Single;
+import io.reactivex.android.plugins.RxAndroidPlugins;
+import io.reactivex.schedulers.Schedulers;
 
 public class GetCurrenciesListTest {
 
@@ -36,7 +38,9 @@ public class GetCurrenciesListTest {
     @Before
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
+        RxAndroidPlugins.setInitMainThreadSchedulerHandler(scheduler -> Schedulers.trampoline());
         presenter = Mockito.spy(new CryptoListPresenter(currencyRepository, currencyDetailsRepository, watchListRepository));
+        presenter.setView(view);
     }
 
     @Test
